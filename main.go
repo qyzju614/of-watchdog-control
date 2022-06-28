@@ -42,12 +42,6 @@ func main() {
 
 	flag.Parse()
 
-	printVersion()
-
-	if versionFlag {
-		return
-	}
-
 	if runHealthcheck {
 		if lockFilePresent() {
 			os.Exit(0)
@@ -386,13 +380,4 @@ func makeHealthHandler() func(http.ResponseWriter, *http.Request) {
 			w.WriteHeader(http.StatusMethodNotAllowed)
 		}
 	}
-}
-
-func printVersion() {
-	sha := "unknown"
-	if len(GitCommit) > 0 {
-		sha = GitCommit
-	}
-
-	log.Printf("Version: %v\tSHA: %v\n", BuildVersion(), sha)
 }
