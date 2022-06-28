@@ -102,6 +102,7 @@ func (f *HTTPFunctionRunner) Run(req FunctionRequest, contentLength int64, r *ht
 	}
 
 	request, err := http.NewRequest(r.Method, upstreamURL, body)
+	log.Printf("request.Context(): %s, upstreamURL: %s, body: %s\n", request.Context(), upstreamURL, body)
 	if err != nil {
 		return err
 	}

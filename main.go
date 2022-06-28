@@ -327,6 +327,7 @@ func makeHTTPRequestHandler(watchdogConfig config.WatchdogConfig, prefixLogs boo
 	}
 
 	functionInvoker.UpstreamURL = urlValue
+	log.Printf("functioninvoker upstreamURL: %s\n", urlValue)
 
 	log.Printf("Forking: %s, arguments: %s", commandName, arguments)
 	functionInvoker.Start()
